@@ -2,6 +2,7 @@
 #Importando PyQt5
 from PyQt5 import  uic,QtWidgets
 import mysql.connector
+from reportlab.pdfgen import canvas
 
 banco = mysql.connector.connect(
     host="localhost",
@@ -9,6 +10,11 @@ banco = mysql.connector.connect(
     password="admin",
     database="cadastro_produtos"
 )
+
+#Função para criar o PDF
+
+
+
 
 def funcao_principal():
     linha1 = formulario.lineEdit.text()
