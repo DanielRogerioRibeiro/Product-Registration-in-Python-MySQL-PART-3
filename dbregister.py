@@ -12,6 +12,9 @@ banco = mysql.connector.connect(
 )
 
 #Função para criar o PDF
+def gerar_pdf():
+     print("Gerar PDF")
+
 
 
 
@@ -74,6 +77,8 @@ formulario=uic.loadUi("formulario.ui")
 segunda_tela=uic.loadUi("lista_de_cadastro.ui")
 formulario.pushButton.clicked.connect(funcao_principal)
 formulario.pushButton_2.clicked.connect(chama_segunda_tela)
+segunda_tela.pushButton.clicked.connect(gerar_pdf)
+
 
 formulario.show()
 app.exec()
