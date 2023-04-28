@@ -13,7 +13,33 @@ banco = mysql.connector.connect(
 
 #Função para criar o PDF
 def gerar_pdf():
-     print("Gerar PDF")
+#mostrar a tabela
+    cursor = banco.cursor()
+    comando_SQL = "SELECT * FROM produtos"
+    cursor.execute(comando_SQL)
+    dados_lidos = cursor.fetchall()
+    y = 0
+    pdf = canvas.Canvas("cadastro_produtos.pdf")
+    pdf.setFont("Times-Bold", 25)
+    pdf.drawString(200,800, "Produtos Cadastrados:")
+    pdf.setFont("Times-Bold", 18)
+
+    pdf.drawString(10,750, "ID")
+    pdf.drawString(110,750, "CODIGO")
+    pdf.drawString(210,750, "PRODUTO")
+    pdf.drawString(310,750, "PREÇO")
+    pdf.drawString(410,750, "CATEGORIA")
+
+    for i in range(0, len(dados_lidos)):
+        y = y + 50
+        pdf.drawString(10,750 -y, str(dados_lidos[i][0]))
+        pdf.drawString(110,750 -y, str(dados_lidos[i][1]))
+        pdf.drawString(210,750 -y, str(dados_lidos[i][2]))
+        pdf.drawString(310,750 -y, str(dados_lidos[i][3]))
+        pdf.drawString(410,750 -y, str(dados_lidos[i][4]))
+    
+    pdf.save() 
+    print("********PDF GERADO COM SUCESSO!!!!********")
 
 
 
