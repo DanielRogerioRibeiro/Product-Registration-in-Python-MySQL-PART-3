@@ -94,7 +94,9 @@ def chama_segunda_tela():
         for j in range(0, 5):
             segunda_tela.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
 
-
+def fecha_segunda_janela():
+    segunda_tela.destroy()
+    return
 
 
 
@@ -104,6 +106,7 @@ segunda_tela=uic.loadUi("lista_de_cadastro.ui")
 formulario.pushButton.clicked.connect(funcao_principal)
 formulario.pushButton_2.clicked.connect(chama_segunda_tela)
 segunda_tela.pushButton.clicked.connect(gerar_pdf)
+segunda_tela.pushButton_2.clicked.connect(fecha_segunda_janela)
 
 
 formulario.show()
