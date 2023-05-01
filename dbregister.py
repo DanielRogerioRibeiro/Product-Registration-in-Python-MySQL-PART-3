@@ -94,6 +94,8 @@ def chama_segunda_tela():
         for j in range(0, 5):
             segunda_tela.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
 
+
+
 def fecha_segunda_janela():
     segunda_tela.destroy()
     return
