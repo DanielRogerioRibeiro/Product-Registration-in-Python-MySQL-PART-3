@@ -96,6 +96,11 @@ def chama_segunda_tela():
 
 
 
+def excluir_registro():
+    linha = segunda_tela.tableWidget.currentRow()
+    segunda_tela.tableWidget.removeRow(linha)
+
+
 def fecha_segunda_janela():
     segunda_tela.destroy()
     return
@@ -103,8 +108,6 @@ def fecha_segunda_janela():
 def fecha_formulario():
     formulario.destroy()
     return
-
-
 
 app=QtWidgets.QApplication([])
 formulario=uic.loadUi("formulario.ui")
@@ -114,6 +117,7 @@ formulario.pushButton_2.clicked.connect(chama_segunda_tela)
 formulario.pushButton_3.clicked.connect(fecha_formulario)
 segunda_tela.pushButton.clicked.connect(gerar_pdf)
 segunda_tela.pushButton_2.clicked.connect(fecha_segunda_janela)
+segunda_tela.pushButton_3.clicked.connect(excluir_registro)
 
 
 formulario.show()
