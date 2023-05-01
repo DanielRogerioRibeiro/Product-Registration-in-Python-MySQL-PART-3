@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>476</width>
-    <height>541</height>
+    <height>570</height>
    </rect>
   </property>
   <property name="maximumSize">
    <size>
     <width>476</width>
-    <height>541</height>
+    <height>570</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -32,9 +32,9 @@
     <property name="geometry">
      <rect>
       <x>350</x>
-      <y>240</y>
-      <width>111</width>
-      <height>51</height>
+      <y>280</y>
+      <width>110</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
@@ -879,9 +879,9 @@ color: rgb(255, 255, 255);</string>
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>360</y>
-      <width>181</width>
+      <x>280</x>
+      <y>490</y>
+      <width>191</width>
       <height>31</height>
      </rect>
     </property>
@@ -956,6 +956,63 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Listar Cadastro</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>490</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>6</green>
+          <blue>6</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>6</green>
+          <blue>6</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>120</red>
+          <green>120</green>
+          <blue>120</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>EXIT</string>
     </property>
    </widget>
   </widget>

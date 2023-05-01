@@ -98,6 +98,10 @@ def fecha_segunda_janela():
     segunda_tela.destroy()
     return
 
+def fecha_formulario():
+    formulario.destroy()
+    return
+
 
 
 app=QtWidgets.QApplication([])
@@ -105,6 +109,7 @@ formulario=uic.loadUi("formulario.ui")
 segunda_tela=uic.loadUi("lista_de_cadastro.ui")
 formulario.pushButton.clicked.connect(funcao_principal)
 formulario.pushButton_2.clicked.connect(chama_segunda_tela)
+formulario.pushButton_3.clicked.connect(fecha_formulario)
 segunda_tela.pushButton.clicked.connect(gerar_pdf)
 segunda_tela.pushButton_2.clicked.connect(fecha_segunda_janela)
 
