@@ -97,9 +97,16 @@ def chama_segunda_tela():
 
 
 def excluir_registro():
+    #Excluindo registro apenas da tabela
     linha = segunda_tela.tableWidget.currentRow()
     segunda_tela.tableWidget.removeRow(linha)
 
+    #Excluindo registro do banco de dados
+    cursor = banco.cursor()
+    cursor.execute("SELECT id FROM produtos")
+    dados_lidos = cursor.fetchall()
+    valor_id = dados_lidos[linha][0]
+    cursor.execute("DELETE FROM produtos WHERE id=" + str(valor_id))
 
 def fecha_segunda_janela():
     segunda_tela.destroy()
