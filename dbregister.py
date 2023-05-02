@@ -108,6 +108,12 @@ def excluir_registro():
     valor_id = dados_lidos[linha][0]
     cursor.execute("DELETE FROM produtos WHERE id=" + str(valor_id))
 
+def editar_registro():
+    tela_editar.show()
+
+
+
+
 def fecha_segunda_janela():
     segunda_tela.destroy()
     return
@@ -116,15 +122,23 @@ def fecha_formulario():
     formulario.destroy()
     return
 
+def fecha_tela_editar():
+    tela_editar.destroy()
+    return
+
 app=QtWidgets.QApplication([])
 formulario=uic.loadUi("formulario.ui")
 segunda_tela=uic.loadUi("lista_de_cadastro.ui")
+tela_editar=uic.loadUi("menu_editar.ui")
 formulario.pushButton.clicked.connect(funcao_principal)
 formulario.pushButton_2.clicked.connect(chama_segunda_tela)
 formulario.pushButton_3.clicked.connect(fecha_formulario)
 segunda_tela.pushButton.clicked.connect(gerar_pdf)
 segunda_tela.pushButton_2.clicked.connect(fecha_segunda_janela)
 segunda_tela.pushButton_3.clicked.connect(excluir_registro)
+segunda_tela.pushButton_4.clicked.connect(editar_registro)
+tela_editar.pushButton_2.clicked.connect(fecha_tela_editar)
+
 
 
 formulario.show()
