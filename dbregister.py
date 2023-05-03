@@ -11,6 +11,9 @@ banco = mysql.connector.connect(
     database="cadastro_produtos"
 )
 
+#Função Global
+numero_id = 0
+
 #Função para criar o PDF
 def gerar_pdf():
 #mostrar a tabela
@@ -109,7 +112,8 @@ def excluir_registro():
     cursor.execute("DELETE FROM produtos WHERE id=" + str(valor_id))
 
 def editar_registro():
-        #Editando registro apenas da tabela
+    global numero_id
+    #Editando registro apenas da tabela
     linha = segunda_tela.tableWidget.currentRow()
     
     #Excluindo registro do banco de dados
@@ -120,6 +124,8 @@ def editar_registro():
     cursor.execute("SELECT * FROM produtos WHERE id=" + str(valor_id))
     produto = cursor.fetchall()
     tela_editar.show()
+
+    numero_id = valor_id
  
     #Exibindo a linha selecionada na janela menu_editar
     tela_editar.lineEdit.setText(str(produto [0][0]))
@@ -129,6 +135,23 @@ def editar_registro():
     tela_editar.lineEdit_5.setText(str(produto[0][4]))
 
 
+def salvar_dados_editados():
+    #Traz o numero id
+    global numero_id
+    
+    #Valor digitado no LineEdit
+    codigo    = tela_editar.lineEdit_2.text()
+    descrição = tela_editar.lineEdit_3.text()
+    preco     = tela_editar.lineEdit_4.text()
+    categoria = tela_editar.lineEdit_5.text()
+    #Atulizando os dados no banco
+    cursor = banco.cursor()
+    cursor.execute("UPDATE produtos SET codigo ='{}', descrição ='{}', preco ='{}', categoria ='{}' WHERE id = {}".format(codigo,descrição,preco,categoria,numero_id))
+    #Atualizar as janelas
+    tela_editar.close()
+    segunda_tela.close()
+    chama_segunda_tela()
+    
 
 
 def fecha_segunda_janela():
@@ -136,24 +159,28 @@ def fecha_segunda_janela():
     return
 
 def fecha_formulario():
-    formulario.destroy()
+    formulario.close()
     return
 
 def fecha_tela_editar():
-    tela_editar.destroy()
+    tela_editar.close()
     return
 
 app=QtWidgets.QApplication([])
 formulario=uic.loadUi("formulario.ui")
 segunda_tela=uic.loadUi("lista_de_cadastro.ui")
 tela_editar=uic.loadUi("menu_editar.ui")
+#Botões da tela formulario
 formulario.pushButton.clicked.connect(funcao_principal)
 formulario.pushButton_2.clicked.connect(chama_segunda_tela)
 formulario.pushButton_3.clicked.connect(fecha_formulario)
+#Botões da tela lista_de_cadastro
 segunda_tela.pushButton.clicked.connect(gerar_pdf)
 segunda_tela.pushButton_2.clicked.connect(fecha_segunda_janela)
 segunda_tela.pushButton_3.clicked.connect(excluir_registro)
 segunda_tela.pushButton_4.clicked.connect(editar_registro)
+#botões da tela menu_editar
+tela_editar.pushButton.clicked.connect(salvar_dados_editados)
 tela_editar.pushButton_2.clicked.connect(fecha_tela_editar)
 
 
